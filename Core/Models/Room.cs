@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,16 +12,15 @@ namespace Room_Mates.Core.Models
         [Required]
         [StringLength(255)]
         public string Address { get; set; }
-        [Required]
-        [StringLength(50)]
         /* ************* About Property ************* */
-        public string PropertyType { get; set; }        // Apartment, House, Studio
+        public int PropertyId { get; set; }
+        public PropertyType PropertyType { get; set; }
         [Required]
         public int NumberBedrooms { get; set; }
         public int NumberBathrooms { get; set; }
         public int RoomsToRent { get; set; }
-        // public ICollection<PropertyFeatures> Features { get; set; }
-        // public ICollection<PropertyRules> Rules { get; set; }
+        public ICollection<PropertyFeatures> PropertyFeatures { get; set; }
+        public ICollection<PropertyRules> Rules { get; set; }
 
         /* ************ About Room ***************** */
         [Required]
@@ -32,23 +32,31 @@ namespace Room_Mates.Core.Models
         public float RoomSquareMeters { get; set; }
         [Required]
         public bool IsFurnished { get; set; }
-        public bool IsEnsuiteBathroom { get; set; }
+        public ICollection<RoomFeatures> RoomFeatures { get; set; }
         public DateTime AvailableFrom { get; set; }
         public int MinStayMonths { get; set; }
 
+        public int PrefMaxAge { get; set; }
+        public string Smoking { get; set; }
+        public string Pet { get; set; }             // Dog(s) ok, Cat(s) ok, Caged Pet(s) ok,
+        public string Cleanliness { get; set; }     // Clean, Average, Messy
         /* ************ Current Roommates ***************** */
         public int NumberRoomatesAlready { get; set; }
 
         /* ************ Preferred Roommates ***************** */
         public string PrefGender { get; set; }
-        public string PrefOcuppation { get; set; }
+        public ICollection<Ocupation> PrefOcuppations { get; set; }
         public int PrefMinAge { get; set; }
-        public int PrefMaxAge { get; set; }
-        // public ApplicationUser User { get; set; }
-        // public int UserId { get; set; }
+
+        public int UserId { get; set; }
+        public ApplicationUser User { get; set; }
+        // public Photo Photos { get; set; }
         public Room()
         {
-            // user.
+            PropertyFeatures = new Collection<PropertyFeatures>();
+            Rules = new Collection<PropertyRules>();
+            RoomFeatures = new Collection<RoomFeatures>();
+            PrefOcuppations = new Collection<Ocupation>();
         }
 
     }
