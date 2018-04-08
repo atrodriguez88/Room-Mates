@@ -19,8 +19,8 @@ namespace Room_Mates.Core.Models
         public int NumberBedrooms { get; set; }
         public int NumberBathrooms { get; set; }
         public int RoomsToRent { get; set; }
-        public ICollection<PropertyFeatures> PropertyFeatures { get; set; }
-        public ICollection<PropertyRules> Rules { get; set; }
+        public ICollection<RoomsPropertyFeatures> PropertyFeatures { get; set; }
+        public ICollection<RoomsPropertyRules> Rules { get; set; }
 
         /* ************ About Room ***************** */
         [Required]
@@ -32,7 +32,7 @@ namespace Room_Mates.Core.Models
         public float RoomSquareMeters { get; set; }
         [Required]
         public bool IsFurnished { get; set; }
-        public ICollection<RoomFeatures> RoomFeatures { get; set; }
+        public ICollection<RoomRoomFeatures> RoomFeatures { get; set; }
         public DateTime AvailableFrom { get; set; }
         public int MinStayMonths { get; set; }
 
@@ -45,7 +45,8 @@ namespace Room_Mates.Core.Models
 
         /* ************ Preferred Roommates ***************** */
         public string PrefGender { get; set; }
-        public ICollection<Ocupation> PrefOcuppations { get; set; }
+        public int OcupationId { get; set; }
+        public Ocupation PrefOcuppations { get; set; }
         public int PrefMinAge { get; set; }
 
         public int UserId { get; set; }
@@ -53,10 +54,9 @@ namespace Room_Mates.Core.Models
         // public Photo Photos { get; set; }
         public Room()
         {
-            PropertyFeatures = new Collection<PropertyFeatures>();
-            Rules = new Collection<PropertyRules>();
-            RoomFeatures = new Collection<RoomFeatures>();
-            PrefOcuppations = new Collection<Ocupation>();
+            Rules = new Collection<RoomsPropertyRules>();
+            PropertyFeatures = new Collection<RoomsPropertyFeatures>();
+            RoomFeatures = new Collection<RoomRoomFeatures>();
         }
 
     }

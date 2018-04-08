@@ -11,8 +11,8 @@ using System;
 namespace RoomMates.Migrations
 {
     [DbContext(typeof(RoomDbContext))]
-    [Migration("20180406045826_NewModels")]
-    partial class NewModels
+    [Migration("20180408063723_CreateModel")]
+    partial class CreateModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -207,11 +207,7 @@ namespace RoomMates.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("RoomId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
 
                     b.ToTable("Ocupations");
                 });
@@ -257,11 +253,7 @@ namespace RoomMates.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("RoomId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
 
                     b.ToTable("PropertyFeatures");
                 });
@@ -273,11 +265,7 @@ namespace RoomMates.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("RoomId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomId");
 
                     b.ToTable("PropertyRules");
                 });
@@ -319,6 +307,8 @@ namespace RoomMates.Migrations
 
                     b.Property<int>("NumberRoomatesAlready");
 
+                    b.Property<int>("OcupationId");
+
                     b.Property<string>("Pet");
 
                     b.Property<string>("PrefGender");
@@ -349,6 +339,8 @@ namespace RoomMates.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OcupationId");
+
                     b.HasIndex("PropertyTypeId");
 
                     b.HasIndex("UserId1");
@@ -363,13 +355,48 @@ namespace RoomMates.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("RoomId");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomId");
-
                     b.ToTable("RoomFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomRoomFeatures", b =>
+                {
+                    b.Property<int>("RoomId");
+
+                    b.Property<int>("RoomFeaturesId");
+
+                    b.HasKey("RoomId", "RoomFeaturesId");
+
+                    b.HasIndex("RoomFeaturesId");
+
+                    b.ToTable("RoomRoomFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyFeatures", b =>
+                {
+                    b.Property<int>("RoomId");
+
+                    b.Property<int>("PropertyFeaturesId");
+
+                    b.HasKey("RoomId", "PropertyFeaturesId");
+
+                    b.HasIndex("PropertyFeaturesId");
+
+                    b.ToTable("RoomsPropertyFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyRules", b =>
+                {
+                    b.Property<int>("RoomId");
+
+                    b.Property<int>("PropertyRulesId");
+
+                    b.HasKey("RoomId", "PropertyRulesId");
+
+                    b.HasIndex("PropertyRulesId");
+
+                    b.ToTable("RoomsPropertyRules");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -417,14 +444,6 @@ namespace RoomMates.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Room_Mates.Core.Models.Ocupation", b =>
-                {
-                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
-                        .WithMany("PrefOcuppations")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Room_Mates.Core.Models.Profile", b =>
                 {
                     b.HasOne("Room_Mates.Core.Models.Ocupation", "Ocupation")
@@ -437,24 +456,13 @@ namespace RoomMates.Migrations
                         .HasForeignKey("UserId1");
                 });
 
-            modelBuilder.Entity("Room_Mates.Core.Models.PropertyFeatures", b =>
-                {
-                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
-                        .WithMany("PropertyFeatures")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Room_Mates.Core.Models.PropertyRules", b =>
-                {
-                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
-                        .WithMany("Rules")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Room_Mates.Core.Models.Room", b =>
                 {
+                    b.HasOne("Room_Mates.Core.Models.Ocupation", "PrefOcuppations")
+                        .WithMany()
+                        .HasForeignKey("OcupationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Room_Mates.Core.Models.PropertyType", "PropertyType")
                         .WithMany()
                         .HasForeignKey("PropertyTypeId");
@@ -464,10 +472,41 @@ namespace RoomMates.Migrations
                         .HasForeignKey("UserId1");
                 });
 
-            modelBuilder.Entity("Room_Mates.Core.Models.RoomFeatures", b =>
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomRoomFeatures", b =>
                 {
+                    b.HasOne("Room_Mates.Core.Models.RoomFeatures", "RoomFeatures")
+                        .WithMany("Room")
+                        .HasForeignKey("RoomFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Room_Mates.Core.Models.Room", "Room")
                         .WithMany("RoomFeatures")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyFeatures", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.PropertyFeatures", "PropertyFeatures")
+                        .WithMany("Rooms")
+                        .HasForeignKey("PropertyFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
+                        .WithMany("PropertyFeatures")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyRules", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.PropertyRules", "PropertyRules")
+                        .WithMany("Rooms")
+                        .HasForeignKey("PropertyRulesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
+                        .WithMany("Rules")
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

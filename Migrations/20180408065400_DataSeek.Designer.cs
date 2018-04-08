@@ -11,8 +11,8 @@ using System;
 namespace RoomMates.Migrations
 {
     [DbContext(typeof(RoomDbContext))]
-    [Migration("20180405052937_Tables-Rooms-Profile")]
-    partial class TablesRoomsProfile
+    [Migration("20180408065400_DataSeek")]
+    partial class DataSeek
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -200,6 +200,18 @@ namespace RoomMates.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Room_Mates.Core.Models.Ocupation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ocupations");
+                });
+
             modelBuilder.Entity("Room_Mates.Core.Models.Profile", b =>
                 {
                     b.Property<int>("Id")
@@ -217,13 +229,57 @@ namespace RoomMates.Migrations
                     b.Property<string>("MaxRentMonth")
                         .IsRequired();
 
-                    b.Property<string>("MovingDate");
+                    b.Property<DateTime>("MovingDate");
 
-                    b.Property<string>("Ocupation");
+                    b.Property<int>("OcupationId");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("UserId1");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OcupationId");
+
+                    b.HasIndex("UserId1");
+
                     b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.PropertyFeatures", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PropertyFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.PropertyRules", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PropertyRules");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.PropertyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PropertyTypes");
                 });
 
             modelBuilder.Entity("Room_Mates.Core.Models.Room", b =>
@@ -237,7 +293,7 @@ namespace RoomMates.Migrations
 
                     b.Property<DateTime>("AvailableFrom");
 
-                    b.Property<bool>("IsEnsuiteBathroom");
+                    b.Property<string>("Cleanliness");
 
                     b.Property<bool>("IsFurnished");
 
@@ -251,17 +307,19 @@ namespace RoomMates.Migrations
 
                     b.Property<int>("NumberRoomatesAlready");
 
+                    b.Property<int>("OcupationId");
+
+                    b.Property<string>("Pet");
+
                     b.Property<string>("PrefGender");
 
                     b.Property<int>("PrefMaxAge");
 
                     b.Property<int>("PrefMinAge");
 
-                    b.Property<string>("PrefOcuppation");
+                    b.Property<int>("PropertyId");
 
-                    b.Property<string>("PropertyType")
-                        .IsRequired()
-                        .HasMaxLength(50);
+                    b.Property<int?>("PropertyTypeId");
 
                     b.Property<float>("RentPerMonth");
 
@@ -273,9 +331,72 @@ namespace RoomMates.Migrations
 
                     b.Property<int>("RoomsToRent");
 
+                    b.Property<string>("Smoking");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("UserId1");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("OcupationId");
+
+                    b.HasIndex("PropertyTypeId");
+
+                    b.HasIndex("UserId1");
+
                     b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomFeatures", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RoomFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomRoomFeatures", b =>
+                {
+                    b.Property<int>("RoomId");
+
+                    b.Property<int>("RoomFeaturesId");
+
+                    b.HasKey("RoomId", "RoomFeaturesId");
+
+                    b.HasIndex("RoomFeaturesId");
+
+                    b.ToTable("RoomRoomFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyFeatures", b =>
+                {
+                    b.Property<int>("RoomId");
+
+                    b.Property<int>("PropertyFeaturesId");
+
+                    b.HasKey("RoomId", "PropertyFeaturesId");
+
+                    b.HasIndex("PropertyFeaturesId");
+
+                    b.ToTable("RoomsPropertyFeatures");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyRules", b =>
+                {
+                    b.Property<int>("RoomId");
+
+                    b.Property<int>("PropertyRulesId");
+
+                    b.HasKey("RoomId", "PropertyRulesId");
+
+                    b.HasIndex("PropertyRulesId");
+
+                    b.ToTable("RoomsPropertyRules");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -320,6 +441,73 @@ namespace RoomMates.Migrations
                     b.HasOne("Room_Mates.Core.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.Profile", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.Ocupation", "Ocupation")
+                        .WithMany()
+                        .HasForeignKey("OcupationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.ApplicationUser", "User")
+                        .WithMany("Profiles")
+                        .HasForeignKey("UserId1");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.Room", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.Ocupation", "PrefOcuppations")
+                        .WithMany()
+                        .HasForeignKey("OcupationId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.PropertyType", "PropertyType")
+                        .WithMany()
+                        .HasForeignKey("PropertyTypeId");
+
+                    b.HasOne("Room_Mates.Core.Models.ApplicationUser", "User")
+                        .WithMany("Rooms")
+                        .HasForeignKey("UserId1");
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomRoomFeatures", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.RoomFeatures", "RoomFeatures")
+                        .WithMany("Room")
+                        .HasForeignKey("RoomFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
+                        .WithMany("RoomFeatures")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyFeatures", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.PropertyFeatures", "PropertyFeatures")
+                        .WithMany("Rooms")
+                        .HasForeignKey("PropertyFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
+                        .WithMany("PropertyFeatures")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Room_Mates.Core.Models.RoomsPropertyRules", b =>
+                {
+                    b.HasOne("Room_Mates.Core.Models.PropertyRules", "PropertyRules")
+                        .WithMany("Rooms")
+                        .HasForeignKey("PropertyRulesId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Room_Mates.Core.Models.Room", "Room")
+                        .WithMany("Rules")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
