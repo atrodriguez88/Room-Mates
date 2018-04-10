@@ -26,9 +26,11 @@ namespace Room_Mates.Controllers
         {
             var room = await context.Rooms
             .Include(r => r.Rules)
+                .ThenInclude(rpr => rpr.PropertyRules)
             .Include(r => r.PropertyFeatures)
+                .ThenInclude(rpf => rpf.PropertyFeatures)
             .Include(r => r.RoomFeatures)
-            .Include(r => r.PrefOcuppations).ToListAsync();
+                .ThenInclude(rrf => rrf.RoomFeatures).ToListAsync();
 
             if (room == null)
             {
@@ -43,9 +45,11 @@ namespace Room_Mates.Controllers
         {
             var room = await context.Rooms
             .Include(r => r.Rules)
+                .ThenInclude(rpr => rpr.PropertyRules)
             .Include(r => r.PropertyFeatures)
+                .ThenInclude(rpf => rpf.PropertyFeatures)
             .Include(r => r.RoomFeatures)
-            .Include(r => r.PrefOcuppations).SingleOrDefaultAsync(r => r.Id == id);
+                .ThenInclude(rrf => rrf.RoomFeatures).SingleOrDefaultAsync(r => r.Id == id);
 
             if (room == null)
                 return NotFound();            
@@ -55,23 +59,23 @@ namespace Room_Mates.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRoom([FromBody] RoomResource roomResource)
+        public async Task<IActionResult> CreateRoom([FromBody] SaveRoomResource roomResource)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            var room = mapper.Map<RoomResource, Room>(roomResource);
+            var room = mapper.Map<SaveRoomResource, Room>(roomResource);
             room.AvailableFrom = DateTime.Now;
 
             await context.Rooms.AddAsync(room);
             await context.SaveChangesAsync();
 
-            return Ok(mapper.Map<Room, RoomResource>(room));
+            return Ok(mapper.Map<Room, SaveRoomResource>(room));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> SaveRoom(int id, [FromBody] RoomResource roomResource)
+        public async Task<IActionResult> SaveRoom(int id, [FromBody] SaveRoomResource roomResource)
         {
             if (!ModelState.IsValid)
             {
@@ -84,12 +88,24 @@ namespace Room_Mates.Controllers
             .Include(r => r.PropertyFeatures)
             .Include(r => r.RoomFeatures)
             .Include(r => r.PrefOcuppations).SingleOrDefaultAsync(r => r.Id == id);
-            mapper.Map<RoomResource, Room>(roomResource, room);
+            mapper.Map<SaveRoomResource, Room>(roomResource, room);
             room.AvailableFrom = DateTime.Now;
 
             await context.SaveChangesAsync();            
 
-            return Ok(mapper.Map<Room, RoomResource>(room));
+            return Ok(mapper.Map<Room, SaveRoomResource>(room));
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+            var room = await context.Rooms.FindAsync(id);
+            if (room == null)
+            {
+                return NotFound();
+            }
+            context.Rooms.Remove(room);
+            await context.SaveChangesAsync();
+            return Ok(id);
         }
 
     }

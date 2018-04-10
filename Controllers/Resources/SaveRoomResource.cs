@@ -4,22 +4,22 @@ using System.Collections.ObjectModel;
 
 namespace Room_Mates.Controllers.Resources
 {
-    public class RoomResource
+    public class SaveRoomResource
     {
-        public int Id { get; set; }
+         public int Id { get; set; }
         public string Address { get; set; }
-        public PropertyTypeResource PropertyType { get; set; }
+        public int PropertyId { get; set; }
         public int NumberBedrooms { get; set; }
         public int NumberBathrooms { get; set; }
         public int RoomsToRent { get; set; }
-        public ICollection<PropertyFeaturesResource> PropertyFeatures { get; set; }
-        public ICollection<PropertyRulesResource> Rules { get; set; }
+        public ICollection<int> PropertyFeatures { get; set; }
+        public ICollection<int> Rules { get; set; }
         public float RentPerMonth { get; set; }
         public bool IsUtilityIncluded { get; set; }
         public string RoomType { get; set; }
         public float RoomSquareMeters { get; set; }
         public bool IsFurnished { get; set; }
-        public ICollection<RoomFeaturesResource> RoomFeatures { get; set; }
+        public ICollection<int> RoomFeatures { get; set; }
         public DateTime AvailableFrom { get; set; }
         public int MinStayMonths { get; set; }
 
@@ -33,17 +33,14 @@ namespace Room_Mates.Controllers.Resources
         /* ************ Preferred Roommates ***************** */
         public string PrefGender { get; set; }
         public int OcupationId { get; set; }
-        public OcupationResource PrefOcuppations { get; set; }
         public int PrefMinAge { get; set; }
 
         public int UserId { get; set; }
-        // public ApplicationUser User { get; set; }
-        // public Photo Photos { get; set; }
-        public RoomResource()
+        public SaveRoomResource()
         {
-            Rules = new Collection<PropertyRulesResource>();
-            PropertyFeatures = new Collection<PropertyFeaturesResource>();
-            RoomFeatures = new Collection<RoomFeaturesResource>();
+            PropertyFeatures = new Collection<int>();
+            Rules = new Collection<int>();
+            RoomFeatures = new Collection<int>();
         }
     }
 }

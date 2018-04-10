@@ -73,7 +73,20 @@ namespace Room_Mates.Controllers
                 return NotFound();
             }
             var profileResource = mapper.Map<Core.Models.Profile, ProfileResource>(profile);
-            return Ok();
+            return Ok(profileResource);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProfile(int id)
+        {
+            var profile = await context.Profiles.FindAsync(id);
+            if (profile == null)
+            {
+                return NotFound();
+            }
+            context.Profiles.Remove(profile);
+            await context.SaveChangesAsync();
+            return Ok(id);
         }
 
     }
