@@ -71,7 +71,16 @@ namespace Room_Mates.Controllers
             await context.Rooms.AddAsync(room);
             await context.SaveChangesAsync();
 
-            return Ok(mapper.Map<Room, SaveRoomResource>(room));
+            // Para devolver un forma de objetos en el API
+            room = await context.Rooms
+            .Include(r => r.Rules)
+                .ThenInclude(rpr => rpr.PropertyRules)
+            .Include(r => r.PropertyFeatures)
+                .ThenInclude(rpf => rpf.PropertyFeatures)
+            .Include(r => r.RoomFeatures)
+                .ThenInclude(rrf => rrf.RoomFeatures).SingleOrDefaultAsync(r => r.Id == room.Id);
+
+            return Ok(mapper.Map<Room, RoomResource>(room));
         }
 
         [HttpPut("{id}")]
@@ -85,16 +94,20 @@ namespace Room_Mates.Controllers
 
             var room = await context.Rooms
             .Include(r => r.Rules)
+                .ThenInclude(rpr => rpr.PropertyRules)
             .Include(r => r.PropertyFeatures)
+                .ThenInclude(rpf => rpf.PropertyFeatures)
             .Include(r => r.RoomFeatures)
-            .Include(r => r.PrefOcuppations).SingleOrDefaultAsync(r => r.Id == id);
+                .ThenInclude(rrf => rrf.RoomFeatures).SingleOrDefaultAsync(r => r.Id == id);
+
             mapper.Map<SaveRoomResource, Room>(roomResource, room);
             room.AvailableFrom = DateTime.Now;
 
-            await context.SaveChangesAsync();            
+            await context.SaveChangesAsync();    
 
-            return Ok(mapper.Map<Room, SaveRoomResource>(room));
+            return Ok(mapper.Map<Room, RoomResource>(room));
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRoom(int id)
         {
@@ -107,6 +120,5 @@ namespace Room_Mates.Controllers
             await context.SaveChangesAsync();
             return Ok(id);
         }
-
     }
 }

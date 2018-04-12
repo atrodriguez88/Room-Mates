@@ -10,11 +10,11 @@ namespace Room_Mates.Mapping
         public MappingProfile()
         {
             // Domain to API (GET)
-            CreateMap<PropertyType,PropertyTypeResource>();
-            CreateMap<RoomFeatures, RoomFeaturesResource>();
-            CreateMap<Ocupation, OcupationResource>();
-            CreateMap<PropertyFeatures, PropertyFeaturesResource>();
-            CreateMap<PropertyRules, PropertyRulesResource>();
+            CreateMap<PropertyType,KeyValuePairResource>();
+            CreateMap<RoomFeatures, KeyValuePairResource>();
+            CreateMap<Ocupation, KeyValuePairResource>();
+            CreateMap<PropertyFeatures, KeyValuePairResource>();
+            CreateMap<PropertyRules, KeyValuePairResource>();
             CreateMap<Core.Models.Profile, ProfileResource>();
                 // (POST, PUT)
             CreateMap<Room, SaveRoomResource>()
@@ -23,20 +23,20 @@ namespace Room_Mates.Mapping
             .ForMember(rr => rr.RoomFeatures, opt => opt.MapFrom(r => r.RoomFeatures.Select(RPR => RPR.RoomFeaturesId)));
                 // (GET)
             CreateMap<Room, RoomResource>()
-            .ForMember(rr => rr.Rules, opt => opt.MapFrom(r => r.Rules.Select(RPR => new PropertyRulesResource{Id = RPR.PropertyRules.Id, Name = RPR.PropertyRules.Name})))
-            .ForMember(rr => rr.PropertyFeatures, opt => opt.MapFrom(r => r.PropertyFeatures.Select(RPR => new PropertyFeaturesResource{Id = RPR.PropertyFeatures.Id, Name = RPR.PropertyFeatures.Name})))
-            .ForMember(rr => rr.RoomFeatures, opt => opt.MapFrom(r => r.RoomFeatures.Select(RPR => new RoomFeaturesResource{ Id = RPR.RoomFeatures.Id, Name = RPR.RoomFeatures.Name})));
+            .ForMember(rr => rr.Rules, opt => opt.MapFrom(r => r.Rules.Select(RPR => new KeyValuePairResource{Id = RPR.PropertyRules.Id, Name = RPR.PropertyRules.Name})))
+            .ForMember(rr => rr.PropertyFeatures, opt => opt.MapFrom(r => r.PropertyFeatures.Select(RPR => new KeyValuePairResource{Id = RPR.PropertyFeatures.Id, Name = RPR.PropertyFeatures.Name})))
+            .ForMember(rr => rr.RoomFeatures, opt => opt.MapFrom(r => r.RoomFeatures.Select(RPR => new KeyValuePairResource{ Id = RPR.RoomFeatures.Id, Name = RPR.RoomFeatures.Name})));
 
             //API to Domain (POST, PUT)
-            CreateMap<PropertyTypeResource,PropertyType>()
+            CreateMap<KeyValuePairResource,PropertyType>()
             .ForMember(pr=>pr.Id,opt => opt.Ignore());            
-            CreateMap<RoomFeaturesResource, RoomFeatures>()
+            CreateMap<KeyValuePairResource, RoomFeatures>()
             .ForMember(r => r.Id, opt => opt.Ignore());
-            CreateMap<OcupationResource, Ocupation>()
+            CreateMap<KeyValuePairResource, Ocupation>()
             .ForMember(o => o.Id, opt => opt.Ignore());
-            CreateMap<PropertyFeaturesResource, PropertyFeatures>()
+            CreateMap<KeyValuePairResource, PropertyFeatures>()
             .ForMember(p => p.Id, opt => opt.Ignore());
-            CreateMap<PropertyRulesResource, PropertyRules>()
+            CreateMap<KeyValuePairResource, PropertyRules>()
             .ForMember(p => p.Id, opt => opt.Ignore());
             CreateMap<ProfileResource, Core.Models.Profile>()
             .ForMember(p => p.Id, opt => opt.Ignore());

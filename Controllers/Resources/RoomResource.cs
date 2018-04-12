@@ -8,18 +8,18 @@ namespace Room_Mates.Controllers.Resources
     {
         public int Id { get; set; }
         public string Address { get; set; }
-        public PropertyTypeResource PropertyType { get; set; }
+        public KeyValuePairResource PropertyType { get; set; }
         public int NumberBedrooms { get; set; }
         public int NumberBathrooms { get; set; }
         public int RoomsToRent { get; set; }
-        public ICollection<PropertyFeaturesResource> PropertyFeatures { get; set; }
-        public ICollection<PropertyRulesResource> Rules { get; set; }
+        public ICollection<KeyValuePairResource> PropertyFeatures { get; set; }
+        public ICollection<KeyValuePairResource> Rules { get; set; }
         public float RentPerMonth { get; set; }
         public bool IsUtilityIncluded { get; set; }
         public string RoomType { get; set; }
         public float RoomSquareMeters { get; set; }
         public bool IsFurnished { get; set; }
-        public ICollection<RoomFeaturesResource> RoomFeatures { get; set; }
+        public ICollection<KeyValuePairResource> RoomFeatures { get; set; }
         public DateTime AvailableFrom { get; set; }
         public int MinStayMonths { get; set; }
 
@@ -33,7 +33,7 @@ namespace Room_Mates.Controllers.Resources
         /* ************ Preferred Roommates ***************** */
         public string PrefGender { get; set; }
         public int OcupationId { get; set; }
-        public OcupationResource PrefOcuppations { get; set; }
+        public KeyValuePairResource PrefOcuppations { get; set; }
         public int PrefMinAge { get; set; }
 
         public int UserId { get; set; }
@@ -41,9 +41,9 @@ namespace Room_Mates.Controllers.Resources
         // public Photo Photos { get; set; }
         public RoomResource()
         {
-            Rules = new Collection<PropertyRulesResource>();
-            PropertyFeatures = new Collection<PropertyFeaturesResource>();
-            RoomFeatures = new Collection<RoomFeaturesResource>();
+            Rules = new Collection<KeyValuePairResource>();
+            PropertyFeatures = new Collection<KeyValuePairResource>();
+            RoomFeatures = new Collection<KeyValuePairResource>();
         }
     }
 }
