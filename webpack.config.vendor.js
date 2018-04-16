@@ -13,6 +13,7 @@ const treeShakableModules = [
     '@angular/platform-browser-dynamic',
     '@angular/router',
     'zone.js',
+    './wwwroot/assets/css/styles.css'
 ];
 const nonTreeShakableModules = [
     'bootstrap',
@@ -21,6 +22,7 @@ const nonTreeShakableModules = [
     'es6-shim',
     'event-source-polyfill',
     'jquery',
+    'font-awesome/css/font-awesome.css'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 

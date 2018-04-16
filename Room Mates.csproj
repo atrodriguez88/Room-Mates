@@ -1,22 +1,216 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0"/>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0"/>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1"/>
-    <PackageReference Include="AutoMapper" Version="6.2.2"/>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0"/>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Content Remove="ClientApp\**"/>
+    <Content Remove="ClientApp\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\assets\.gitkeep" />
+    <None Include="wwwroot\assets\css\animate.css" />
+    <None Include="wwwroot\assets\css\custom.css" />
+    <None Include="wwwroot\assets\css\styles.css" />
+    <None Include="wwwroot\assets\echart\echarts-all.js" />
+    <None Include="wwwroot\assets\fonts\ionicons.eot" />
+    <None Include="wwwroot\assets\fonts\ionicons.svg" />
+    <None Include="wwwroot\assets\fonts\ionicons.ttf" />
+    <None Include="wwwroot\assets\fonts\ionicons.woff" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.eot" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.ttf" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.woff" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\assets\fonts\SEGOEUI.ttf" />
+    <None Include="wwwroot\assets\fonts\SEGOEUIB.TTF" />
+    <None Include="wwwroot\assets\fonts\segoeuii.ttf" />
+    <None Include="wwwroot\assets\fonts\SEGOEUIZ.TTF" />
+    <None Include="wwwroot\assets\fonts\Simple-Line-Icons.eot" />
+    <None Include="wwwroot\assets\fonts\Simple-Line-Icons.svg" />
+    <None Include="wwwroot\assets\fonts\Simple-Line-Icons.ttf" />
+    <None Include="wwwroot\assets\fonts\Simple-Line-Icons.woff" />
+    <None Include="wwwroot\assets\fonts\Simple-Line-Icons.woff2" />
+    <None Include="wwwroot\assets\icon\font-awesome\css\font-awesome.css" />
+    <None Include="wwwroot\assets\icon\font-awesome\css\font-awesome.min.css" />
+    <None Include="wwwroot\assets\icon\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\icon\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\icon\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\icon\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\icon\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\icon\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\assets\icon\font-awesome\HELP-US-OUT.txt" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\animated.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\core.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\icons.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\larger.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\list.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\path.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\screen-reader.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\less\variables.less" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\font-awesome.css" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\font-awesome.css.map" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\assets\icon\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\assets\icon\ico-fonts\css\icofont.css" />
+    <None Include="wwwroot\assets\icon\ico-fonts\fonts\icofont.eot" />
+    <None Include="wwwroot\assets\icon\ico-fonts\fonts\icofont.svg" />
+    <None Include="wwwroot\assets\icon\ico-fonts\fonts\icofont.ttf" />
+    <None Include="wwwroot\assets\icon\ico-fonts\fonts\icofont.woff" />
+    <None Include="wwwroot\assets\icon\icofont\css\icofont.css" />
+    <None Include="wwwroot\assets\icon\icofont\fonts\icofont.eot" />
+    <None Include="wwwroot\assets\icon\icofont\fonts\icofont.svg" />
+    <None Include="wwwroot\assets\icon\icofont\fonts\icofont.ttf" />
+    <None Include="wwwroot\assets\icon\icofont\fonts\icofont.woff" />
+    <None Include="wwwroot\assets\icon\SVG-animated\svg-weather.css" />
+    <None Include="wwwroot\assets\images\auth\Logo-small-bottom.png" />
+    <None Include="wwwroot\assets\images\auth\logo.png" />
+    <None Include="wwwroot\assets\images\avatar-1.jpg" />
+    <None Include="wwwroot\assets\images\avatar-1.png" />
+    <None Include="wwwroot\assets\images\avatar-2.png" />
+    <None Include="wwwroot\assets\images\avatar-3.png" />
+    <None Include="wwwroot\assets\images\avatar-4.png" />
+    <None Include="wwwroot\assets\images\avatar-5.png" />
+    <None Include="wwwroot\assets\images\avatar.jpg" />
+    <None Include="wwwroot\assets\images\bg.jpg" />
+    <None Include="wwwroot\assets\images\chat-bg.jpg" />
+    <None Include="wwwroot\assets\images\commingsoon\cs-1.jpg" />
+    <None Include="wwwroot\assets\images\commingsoon\cs-2.jpg" />
+    <None Include="wwwroot\assets\images\complete.png" />
+    <None Include="wwwroot\assets\images\details_close.png" />
+    <None Include="wwwroot\assets\images\details_open.png" />
+    <None Include="wwwroot\assets\images\error\error-1.jpg" />
+    <None Include="wwwroot\assets\images\error\error-2.jpg" />
+    <None Include="wwwroot\assets\images\error\error-3.jpg" />
+    <None Include="wwwroot\assets\images\error\error-4.jpg" />
+    <None Include="wwwroot\assets\images\error\error-5.jpg" />
+    <None Include="wwwroot\assets\images\logo-blue.png" />
+    <None Include="wwwroot\assets\images\logo.png" />
+    <None Include="wwwroot\assets\images\mega-menu\01.jpg" />
+    <None Include="wwwroot\assets\images\mega-menu\02.jpg" />
+    <None Include="wwwroot\assets\images\mega-menu\03.jpg" />
+    <None Include="wwwroot\assets\images\mega-menu\04.jpg" />
+    <None Include="wwwroot\assets\images\mega-menu\05.jpg" />
+    <None Include="wwwroot\assets\images\mega-menu\06.jpg" />
+    <None Include="wwwroot\assets\images\modal\overflow.jpg" />
+    <None Include="wwwroot\assets\images\oval.svg" />
+    <None Include="wwwroot\assets\images\pattern1.png" />
+    <None Include="wwwroot\assets\images\pattern2.png" />
+    <None Include="wwwroot\assets\images\pattern3.png" />
+    <None Include="wwwroot\assets\images\pattern4.png" />
+    <None Include="wwwroot\assets\images\pattern5.png" />
+    <None Include="wwwroot\assets\images\pattern6.png" />
+    <None Include="wwwroot\assets\images\pattern7.png" />
+    <None Include="wwwroot\assets\images\pattern8.png" />
+    <None Include="wwwroot\assets\images\pattern9.png" />
+    <None Include="wwwroot\assets\images\select-arrow.png" />
+    <None Include="wwwroot\assets\images\slider8.jpg" />
+    <None Include="wwwroot\assets\images\slider\slide1.jpg" />
+    <None Include="wwwroot\assets\images\slider\slide2.jpg" />
+    <None Include="wwwroot\assets\images\slider\slide3.jpg" />
+    <None Include="wwwroot\assets\images\slider\slide4.jpg" />
+    <None Include="wwwroot\assets\images\slider\slider5.jpg" />
+    <None Include="wwwroot\assets\images\slider\slider6.jpg" />
+    <None Include="wwwroot\assets\images\slider\slider7.jpg" />
+    <None Include="wwwroot\assets\images\slider\slider8.jpg" />
+    <None Include="wwwroot\assets\images\task\task-u1.jpg" />
+    <None Include="wwwroot\assets\images\task\task-u2.jpg" />
+    <None Include="wwwroot\assets\images\task\task-u3.jpg" />
+    <None Include="wwwroot\assets\images\task\task-u4.jpg" />
+    <None Include="wwwroot\assets\images\tooltip\Euclid.png" />
+    <None Include="wwwroot\assets\images\tooltip\shape1.svg" />
+    <None Include="wwwroot\assets\images\tooltip\tooltip1.svg" />
+    <None Include="wwwroot\assets\images\user-card\card\card-img1.jpg" />
+    <None Include="wwwroot\assets\images\user-card\card\card-img2.jpg" />
+    <None Include="wwwroot\assets\images\user-card\card\card-img3.jpg" />
+    <None Include="wwwroot\assets\images\user-card\img-round1.jpg" />
+    <None Include="wwwroot\assets\images\user-card\img-round2.jpg" />
+    <None Include="wwwroot\assets\images\user-card\img-round3.jpg" />
+    <None Include="wwwroot\assets\images\user-card\img-round4.jpg" />
+    <None Include="wwwroot\assets\images\user-card\inverse-img1.jpg" />
+    <None Include="wwwroot\assets\images\user-card\inverse-img2.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\bg-img1.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\contact-user.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\follower\f-1.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\follower\f-2.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\follower\f-3.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\follower\f-4.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\follower\f-5.jpg" />
+    <None Include="wwwroot\assets\images\user-profile\user-img.jpg" />
+    <None Include="wwwroot\assets\images\user.png" />
+    <None Include="wwwroot\assets\images\widget\prod1.jpg" />
+    <None Include="wwwroot\assets\images\widget\prod2.jpg" />
+    <None Include="wwwroot\assets\images\widget\prod3.jpg" />
+    <None Include="wwwroot\assets\images\widget\prod4.jpg" />
+    <None Include="wwwroot\assets\images\widget\profile-person1.jpg" />
+    <None Include="wwwroot\assets\images\widget\user-blur-bg.png" />
+    <None Include="wwwroot\assets\images\widget\user1.png" />
+    <None Include="wwwroot\assets\images\widget\user2.png" />
+    <None Include="wwwroot\assets\images\widget\user3.png" />
+    <None Include="wwwroot\assets\images\widget\user4.png" />
+    <None Include="wwwroot\assets\jq-vmap\jquery.vmap.js" />
+    <None Include="wwwroot\assets\jq-vmap\jquery.vmap.min.js" />
+    <None Include="wwwroot\assets\jq-vmap\jqvmap.css" />
+    <None Include="wwwroot\assets\jq-vmap\jqvmap.min.css" />
+    <None Include="wwwroot\assets\jq-vmap\maps\continents\jquery.vmap.africa.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\continents\jquery.vmap.asia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\continents\jquery.vmap.australia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\continents\jquery.vmap.europe.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\continents\jquery.vmap.north-america.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\continents\jquery.vmap.south-america.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.algeria.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.argentina.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.brazil.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.canada.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.croatia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.europe.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.france.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.germany.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.greece.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.indonesia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.iran.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.iraq.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.new_regions_france.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.russia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.serbia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.tunisia.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.turkey.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.ukraine.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.usa.js" />
+    <None Include="wwwroot\assets\jq-vmap\maps\jquery.vmap.world.js" />
+    <None Include="wwwroot\assets\pages\treeview\icon-tree.png" />
+    <None Include="wwwroot\assets\pages\treeview\jquery.tree.js" />
+    <None Include="wwwroot\assets\pages\treeview\throbber.gif" />
+    <None Include="wwwroot\assets\pages\treeview\treeview.css" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -26,19 +220,19 @@
   </PropertyGroup>
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <Exec Command="node --version" ContinueOnError="true">
-      <Output TaskParameter="ExitCode" PropertyName="ErrorCode"/>
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
     </Exec>
-    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js"/>
-    <Exec Command="node node_modules/webpack/bin/webpack.js"/>
-    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE."/>
-    <Message Importance="high" Text="Performing first-run Webpack build..."/>
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
   </Target>
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
-    <Exec Command="npm install"/>
-    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod"/>
-    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod"/>
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
     <ItemGroup>
-      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**"/>
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

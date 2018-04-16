@@ -23,7 +23,7 @@
     "aspnet-prerendering": "^3.0.1",
     "aspnet-webpack": "^2.0.1",
     "awesome-typescript-loader": "3.2.1",
-    "bootstrap": "3.3.7",
+    "bootstrap": "^4.0.0-beta",
     "css": "2.2.1",
     "css-loader": "0.28.4",
     "es6-shim": "0.35.3",
@@ -31,15 +31,20 @@
     "expose-loader": "0.7.3",
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.11.2",
+    "flag-icon-css": "^2.8.0",
+    "font-awesome": "^4.7.0",
     "html-loader": "0.4.5",
     "isomorphic-fetch": "2.2.1",
     "jquery": "3.2.1",
     "json-loader": "0.5.4",
+    "popper.js": "^1.14.3",
     "preboot": "4.5.2",
     "raw-loader": "0.5.1",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.4.2",
+    "simple-line-icons": "^2.4.1",
     "style-loader": "0.18.2",
+    "ti-icons": "^0.1.2",
     "to-string-loader": "1.1.5",
     "typescript": "2.4.1",
     "url-loader": "0.5.9",
@@ -49,6 +54,7 @@
     "zone.js": "0.8.12"
   },
   "devDependencies": {
+    "@angular/cli": "^1.7.4",
     "@types/chai": "4.0.1",
     "@types/jasmine": "2.5.53",
     "chai": "4.0.2",
@@ -58,6 +64,8 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-cli": "1.0.1",
     "karma-jasmine": "1.1.0",
-    "karma-webpack": "2.0.3"
+    "karma-webpack": "2.0.3",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "webpack-cli": "2.0.14"
   }
 }

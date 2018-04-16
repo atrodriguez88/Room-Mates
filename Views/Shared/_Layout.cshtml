@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,11 +6,38 @@
     <title>@ViewData["Title"] - Room_Mates</title>
     <base href="~/" />
 
-    <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+      <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
+      <!-- Google font-->
+      <link href="https://fonts.googleapis.com/css?family=Mada:300,400,500,600,700" rel="stylesheet">
+      <!-- themify-icons line icon -->
+      <link rel="stylesheet" type="text/css" href="~/assets/icon/themify-icons/themify-icons.css" asp-append-version="true">
+      <!-- ico font -->
+      <link rel="stylesheet" type="text/css" href="~/assets/icon/icofont/css/icofont.css" asp-append-version="true">
+      <!-- flag icon framework css -->
+      <link rel="stylesheet" type="text/css" href="~/assets/pages/flag-icon/flag-icon.min.css" asp-append-version="true">   
+      <!-- bootstrap framework css -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- Menu-Search css -->
+      <link rel="stylesheet" type="text/css" href="~/assets/pages/menu-search/css/component.css" asp-append-version="true">
+      <!-- Style.css -->
+      <link rel="stylesheet" type="text/css" href="~/assets/css/styles.css" asp-append-version="true">
+      <!--color css-->
+
+      <link rel="stylesheet" type="text/css" href="~/assets/css/linearicons.css" asp-append-version="true">
+      <link rel="stylesheet" type="text/css" href="~/assets/css/simple-line-icons.css" asp-append-version="true">
+      <link rel="stylesheet" type="text/css" href="~/assets/css/ionicons.css" asp-append-version="true">
+      <link rel="stylesheet" type="text/css" href="~/assets/css/jquery.mCustomScrollbar.css" asp-append-version="true">
 </head>
 <body>
     @RenderBody()
 
     @RenderSection("scripts", required: false)
+
+            <!-- Custom js -->
+        <script type="text/javascript" src="assets/js/script.js"></script>
+        <script src="assets/js/pcoded.min.js"></script>
+        <script src="assets/js/demo-12.js"></script>
+        <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="assets/js/jquery.mousewheel.min.js"></script>
 </body>
 </html>
